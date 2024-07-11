@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+// import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '/src/helper.dart';
 import '/src/model/page_view_model.dart';
@@ -403,7 +403,7 @@ class IntroductionScreenState extends State<IntroductionScreen> {
   bool _isSkipPressed = false;
   bool _isScrolling = false;
   late bool _showBottom;
-  StreamSubscription<bool>? keyboardSubscription;
+  // StreamSubscription<bool>? keyboardSubscription;
 
   PageController get controller => _pageController;
 
@@ -415,24 +415,24 @@ class IntroductionScreenState extends State<IntroductionScreen> {
     _showBottom = widget.showBottomPart;
     _currentPage = initialPage.toDouble();
     _autoScroll(widget.autoScrollDuration);
-    if (widget.hideBottomOnKeyboard) {
-      final keyboardVisibilityController = KeyboardVisibilityController();
-      keyboardSubscription = keyboardVisibilityController.onChange.listen(
-        (bool visible) {
-          setState(() {
-            _showBottom = !visible;
-          });
-        },
-      );
-    }
+    // if (widget.hideBottomOnKeyboard) {
+    //   final keyboardVisibilityController = KeyboardVisibilityController();
+    //   keyboardSubscription = keyboardVisibilityController.onChange.listen(
+    //     (bool visible) {
+    //       setState(() {
+    //         _showBottom = !visible;
+    //       });
+    //     },
+    //   );
+    // }
   }
 
   @override
   void dispose() {
     _pageController.dispose();
-    if (keyboardSubscription != null) {
-      keyboardSubscription!.cancel();
-    }
+    // if (keyboardSubscription != null) {
+    //   keyboardSubscription!.cancel();
+    // }
     widget.scrollControllers?.forEach((controller) {
       controller?.dispose();
     });
